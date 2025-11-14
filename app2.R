@@ -118,15 +118,23 @@ ui <- tagList(
         value = "network_tab",
         sidebarLayout(
           sidebarPanel(
-            sliderInput("threshold_num", "Threshold for Quantitative-Quantitative and Quantitative-Categorical Associations (R²)",
-                        min = 0, max = 1, value = 0.5, step = 0.05
+            sliderInput(
+              "threshold_num",
+              "Range for Quantitative-Quantitative and Quantitative-Categorical Associations (R²)",
+              min = 0, max = 1,
+              value = c(0.5, 1),  # default range
+              step = 0.05
             ),
-            sliderInput("threshold_cat", "Threshold for Categorical-Categorical Associations (Cramer's V)",
-                        min = 0, max = 1, value = 0.5, step = 0.05
+            sliderInput(
+              "threshold_cat",
+              "Range for Categorical-Categorical Associations (Cramer's V)",
+              min = 0, max = 1,
+              value = c(0.5, 1),  # default range
+              step = 0.05
             ),
             tags$i(tags$span(
               style = "color: #666666",
-              "Only associations stronger than the thresholds will be displayed in the plot."
+              "Only associations whose strength falls within the selected ranges will be displayed in the plot."
             )),
             br(),
             br(),
@@ -164,8 +172,8 @@ ui <- tagList(
             tags$li("Upload your dataset (CSV or Excel) in the 'Data' tab. Optionally, upload a file with variable descriptions. This file must contain 2 columns called 'Variable' and 'Description'."),
             tags$li("In the 'Variables' tab, select the variables you want to explore. If you upload a file containing variables' descriptions, a summary table below shows the selected variables along with their descriptions."),
             tags$li("Click 'Visualize all associations' to access the correlation network."),
-            tags$li("Adjust the thresholds to filter associations by strength. Only variables that have strong associations (as defined by the thresholds) will appear in the network and pairs plots."),
-            tags$li("In the correlation network plot, thicker and shorter edges indicate stronger associations."),
+            tags$li("Adjust the threshold ranges to filter associations by strength. Only variables whose associations fall within the selected ranges will appear in the network and in the pairs plots."),
+            tags$li("In the correlation network plot, thicker and shorter edges indicate stronger associations. Moreover, for quantitative-quantitative pairs only, red edges indicate negative associations, while blue edges indicate positive ones."),
             tags$li("Click 'See pairs plots' to display bivariate visualizations for retained associations.")
           )
         )
@@ -638,6 +646,12 @@ server <- function(input, output, session) {
     cor_type_matrix <- matrix("", n, n, dimnames = list(vars, vars)) # Matrix to store correlation type
     combs <- combn(vars, 2, simplify = FALSE)
     
+    # unpack ranges
+    num_min <- threshold_num[1]
+    num_max <- threshold_num[2]
+    cat_min <- threshold_cat[1]
+    cat_max <- threshold_cat[2]
+    
     for (pair in combs) {
       v1 <- pair[1]
       v2 <- pair[2]
@@ -655,8 +669,11 @@ server <- function(input, output, session) {
       if (is_num1 && is_num2) {
         if (length(x) > 0 && length(y) > 0) {
           r <- cor(x, y, use = "complete.obs")
-          cor_val <- ifelse(r^2 >= threshold_num, r, 0)
-          cor_type <- "Pearson's r"
+          r2 <- r^2
+          if (!is.na(r2) && r2 >= num_min && r2 <= num_max) {
+            cor_val <- r      # keep sign
+            cor_type <- "Pearson's r"
+          }
         }
         
         # Categorical vs categorical case
@@ -665,19 +682,18 @@ server <- function(input, output, session) {
           tbl <- table(x, y)
           if (nrow(tbl) > 1 && ncol(tbl) > 1) { # Need at least 2 categories in each
             chi <- tryCatch(
-              {
-                chisq.test(tbl, simulate.p.value = TRUE)
-              },
+              chisq.test(tbl, simulate.p.value = TRUE),
               error = function(e) NULL
             )
-            
             if (!is.null(chi)) {
               n_obs <- sum(tbl)
               df_min <- min(nrow(tbl) - 1, ncol(tbl) - 1)
               if (df_min > 0) {
                 v_cramer <- sqrt(chi$statistic / (n_obs * df_min))
-                cor_val <- ifelse(v_cramer >= threshold_cat, v_cramer, 0)
-                cor_type <- "Cramer's V"
+                if (!is.na(v_cramer) && v_cramer >= cat_min && v_cramer <= cat_max) {
+                  cor_val <- v_cramer
+                  cor_type <- "Cramer's V"
+                }
               }
             }
           }
@@ -695,15 +711,18 @@ server <- function(input, output, session) {
         
         if (length(num_var) > 0 && length(cat_var) > 0) {
           means_by_group <- tapply(num_var, cat_var, mean, na.rm = TRUE)
-          overall_mean <- mean(num_var, na.rm = TRUE)
-          n_groups <- tapply(num_var, cat_var, length)
+          overall_mean   <- mean(num_var, na.rm = TRUE)
+          n_groups       <- tapply(num_var, cat_var, length)
           bss <- sum(n_groups * (means_by_group - overall_mean)^2, na.rm = TRUE)
           tss <- sum((num_var - overall_mean)^2, na.rm = TRUE)
           
           if (tss > 0) {
-            eta <- sqrt(bss / tss)
-            cor_val <- ifelse(eta^2 >= threshold_num, eta, 0)
-            cor_type <- "Eta"
+            eta  <- sqrt(bss / tss)
+            eta2 <- eta^2
+            if (!is.na(eta2) && eta2 >= num_min && eta2 <= num_max) {
+              cor_val <- eta
+              cor_type <- "Eta"
+            }
           }
         }
       }
