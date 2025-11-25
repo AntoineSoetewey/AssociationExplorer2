@@ -7,7 +7,7 @@ dat_BE <- read.csv("data/ESS11_full_dataset.csv", stringsAsFactors = TRUE) |>
   filter(cntry == "BE")
 
 dat <- dat_BE |>
-  select(nwspol:pplhlp, polintr:vote, happy:rlgblg, rlgdgr:dscrgrp, ctzcntr:brncntr,
+  select(anweight, nwspol:pplhlp, polintr:vote, happy:rlgblg, rlgdgr:dscrgrp, ctzcntr:brncntr,
          livecnta, feethngr, facntr, mocntr, ccrdprs, wrclmch, ctrlife:alcwknd, alcbnge:weighta, medtrun,
          stflife, gndr, agea, rshpsts, ipstrgva, vacc19)
 
