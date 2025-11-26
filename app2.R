@@ -698,7 +698,7 @@ server <- function(input, output, session) {
           }
         })
         nav_panel(
-          paste0(v1, " vs. ", v2),
+          paste0(v1, " vs ", v2),
           div(
             id = paste0("plot_container_", i),
             plotOutput(plotname, height = "600px")
