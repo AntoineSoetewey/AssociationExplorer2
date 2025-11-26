@@ -112,7 +112,7 @@ ui <- tagList(
         uiOutput("weight_var_ui"),
         tags$p(
           style = "font-size:0.85em; color: #666666;",
-          "If a survey weight is selected, all association measures and plots are computed using these weights."
+          "If a survey weight is selected, all association measures, plots and tables are computed using these weights."
         ),
         br(),
         uiOutput("go_to_network_ui"),
@@ -179,7 +179,7 @@ ui <- tagList(
           tags$ul(
             tags$li("Upload your dataset (CSV or Excel) in the 'Data' tab. Optionally, upload a file with variable descriptions. This file must contain 2 columns called 'Variable' and 'Description'."),
             tags$li("In the 'Variables' tab, select the variables you want to explore. If you upload a file containing variables' descriptions, a summary table below shows the selected variables along with their descriptions."),
-            tags$li("(Optional) Select a survey weight variable in the 'Variables' tab. When provided, all association measures and plots are computed using these weights."),
+            tags$li("(Optional) Select a survey weight variable in the 'Variables' tab. When provided, all association measures, plots and tables are computed using these weights."),
             tags$li("Click 'Visualize all associations' to access the correlation network."),
             tags$li("Adjust the threshold ranges to filter associations by strength. Only variables whose associations fall within the selected ranges will appear in the network and in the pairs plots."),
             tags$li("In the correlation network plot, thicker and shorter edges indicate stronger associations. Moreover, for quantitative-quantitative pairs only, red edges indicate negative associations, while blue edges indicate positive ones."),
