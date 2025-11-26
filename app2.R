@@ -105,7 +105,15 @@ ui <- tagList(
         value = "variables_tab",
         br(),
         br(),
+        # selector for variables to include
         uiOutput("variable_checkboxes_ui"),
+        br(),
+        # optional survey weight selector
+        uiOutput("weight_var_ui"),
+        tags$p(
+          style = "font-size:0.85em; color: #666666;",
+          "If a survey weight is selected, all association measures and plots are computed using these weights."
+        ),
         br(),
         uiOutput("go_to_network_ui"),
         br(),
@@ -171,6 +179,7 @@ ui <- tagList(
           tags$ul(
             tags$li("Upload your dataset (CSV or Excel) in the 'Data' tab. Optionally, upload a file with variable descriptions. This file must contain 2 columns called 'Variable' and 'Description'."),
             tags$li("In the 'Variables' tab, select the variables you want to explore. If you upload a file containing variables' descriptions, a summary table below shows the selected variables along with their descriptions."),
+            tags$li("(Optional) Select a survey weight variable in the 'Variables' tab. When provided, all association measures and plots are computed using these weights."),
             tags$li("Click 'Visualize all associations' to access the correlation network."),
             tags$li("Adjust the threshold ranges to filter associations by strength. Only variables whose associations fall within the selected ranges will appear in the network and in the pairs plots."),
             tags$li("In the correlation network plot, thicker and shorter edges indicate stronger associations. Moreover, for quantitative-quantitative pairs only, red edges indicate negative associations, while blue edges indicate positive ones."),
@@ -295,15 +304,36 @@ server <- function(input, output, session) {
     updateTabsetPanel(session, "main_tabs", selected = "variables_tab")
   })
   
+  # Optional survey weight selection (numeric variables only)
+  output$weight_var_ui <- renderUI({
+    req(data())
+    numeric_vars <- names(data())[sapply(data(), is.numeric)]
+    
+    selectInput(
+      inputId = "weight_var",
+      label   = "(Optional) Select survey weight variable:",
+      choices = c("None" = "", numeric_vars),
+      selected = "",
+      width   = "100%"
+    )
+  })
+  
   output$variable_checkboxes_ui <- renderUI({
     req(data())
+    
+    all_vars <- names(data())
+    wvar <- input$weight_var
+    if (!is.null(wvar) && nzchar(wvar)) {
+      all_vars <- setdiff(all_vars, wvar)
+    }
+    
     selectizeInput(
       inputId = "selected_vars",
       label = "Select variables to include:",
-      choices = names(data()),
-      selected = names(data()),
+      choices = all_vars,
+      selected = all_vars,
       multiple = TRUE,
-      width = "100%", # ⬅️ This makes the input take full width of its container
+      width = "100%",
       options = list(
         maxItems = NULL,
         plugins = list("remove_button"),
@@ -357,7 +387,15 @@ server <- function(input, output, session) {
     req(data())
     selected_vars <- valid_selected_vars()
     selected_data <- data()[, selected_vars, drop = FALSE]
-    calculate_correlations(selected_data, input$threshold_num, input$threshold_cat)
+    
+    # extract weights (if any) aligned with the full dataset
+    w <- NULL
+    wvar <- input$weight_var
+    if (!is.null(wvar) && nzchar(wvar) && wvar %in% names(data())) {
+      w <- data()[[wvar]]
+    }
+    
+    calculate_correlations(selected_data, input$threshold_num, input$threshold_cat, weights = w)
   })
   
   cor_matrix_vals <- reactive({
@@ -367,8 +405,17 @@ server <- function(input, output, session) {
   filtered_data_for_pairs <- reactive({
     mat <- cor_matrix_vals()$cor_matrix
     nodes_to_keep <- rowSums(abs(mat) > 0) > 1
-    filtered_matrix <- mat[nodes_to_keep, nodes_to_keep]
-    data()[, colnames(filtered_matrix), drop = FALSE]
+    filtered_matrix <- mat[nodes_to_keep, nodes_to_keep, drop = FALSE]
+    
+    vars <- colnames(filtered_matrix)
+    df <- data()[, vars, drop = FALSE]
+    
+    wvar <- input$weight_var
+    if (!is.null(wvar) && nzchar(wvar) && wvar %in% names(data())) {
+      df$.weight <- data()[[wvar]]
+    }
+    
+    df
   })
   
   significant_pairs <- reactive({
@@ -503,14 +550,34 @@ server <- function(input, output, session) {
         
         output[[plotname]] <- renderPlot({
           if (nrow(plot_data) > 0) {
-            ggplot(plot_data, aes(x = .data[[v1]], y = .data[[v2]])) +
+            p <- ggplot(plot_data, aes(x = .data[[v1]], y = .data[[v2]])) +
               geom_jitter(
                 alpha = 0.6,
                 color = "steelblue",
                 width = 0.5,
                 height = 0.5
-              ) +
-              geom_smooth(method = "lm", se = FALSE, color = "darkred", linewidth = 1) +
+              )
+            
+            if (".weight" %in% names(plot_data)) {
+              p <- p +
+                geom_smooth(
+                  method = "lm",
+                  se = FALSE,
+                  aes(weight = .weight),
+                  color = "darkred",
+                  linewidth = 1
+                )
+            } else {
+              p <- p +
+                geom_smooth(
+                  method = "lm",
+                  se = FALSE,
+                  color = "darkred",
+                  linewidth = 1
+                )
+            }
+            
+            p +
               labs(
                 x = desc1,
                 y = desc2
@@ -586,14 +653,27 @@ server <- function(input, output, session) {
         
         output[[plotname]] <- renderPlot({
           if (nrow(plot_data) > 0) {
-            df_sum <- plot_data |>
-              group_by(.data[[cat_var]]) |>
-              summarise(
-                mean_val = mean(.data[[num_var]], na.rm = TRUE),
-                .groups = "drop"
-              ) |>
-              arrange(mean_val) |>
-              mutate({{ cat_var }} := factor(.data[[cat_var]], levels = .data[[cat_var]]))
+            
+            if (".weight" %in% names(plot_data)) {
+              df_sum <- plot_data |>
+                filter(!is.na(.data$.weight)) |>
+                group_by(.data[[cat_var]]) |>
+                summarise(
+                  mean_val = weighted.mean(.data[[num_var]], w = .data$.weight, na.rm = TRUE),
+                  .groups = "drop"
+                ) |>
+                arrange(mean_val) |>
+                mutate({{ cat_var }} := factor(.data[[cat_var]], levels = .data[[cat_var]]))
+            } else {
+              df_sum <- plot_data |>
+                group_by(.data[[cat_var]]) |>
+                summarise(
+                  mean_val = mean(.data[[num_var]], na.rm = TRUE),
+                  .groups = "drop"
+                ) |>
+                arrange(mean_val) |>
+                mutate({{ cat_var }} := factor(.data[[cat_var]], levels = .data[[cat_var]]))
+            }
             
             ggplot(df_sum, aes(x = .data[[cat_var]], y = mean_val)) +
               geom_col(fill = "steelblue", width = 0.6) +
@@ -638,8 +718,28 @@ server <- function(input, output, session) {
     tagList(navset_card_tab(id = "bivariate_tabs", !!!tabs))
   })
   
+  weighted_cor <- function(x, y, w) {
+    # Remove rows with missing x, y or w
+    ok <- !is.na(x) & !is.na(y) & !is.na(w)
+    x <- x[ok]
+    y <- y[ok]
+    w <- w[ok]
+    
+    if (length(x) < 2 || sum(w) <= 0) return(NA_real_)
+    
+    w_norm <- w / sum(w)
+    mx <- sum(w_norm * x)
+    my <- sum(w_norm * y)
+    cov_xy <- sum(w_norm * (x - mx) * (y - my))
+    vx <- sum(w_norm * (x - mx)^2)
+    vy <- sum(w_norm * (y - my)^2)
+    
+    if (vx <= 0 || vy <= 0) return(NA_real_)
+    cov_xy / sqrt(vx * vy)
+  }
+  
   # Function to calculate correlation matrix based on variable types
-  calculate_correlations <- function(data, threshold_num, threshold_cat) {
+  calculate_correlations <- function(data, threshold_num, threshold_cat, weights = NULL) {
     vars <- names(data)
     n <- length(vars)
     cor_matrix <- matrix(0, n, n, dimnames = list(vars, vars))
@@ -665,10 +765,20 @@ server <- function(input, output, session) {
       x <- data[[v1]][complete_cases]
       y <- data[[v2]][complete_cases]
       
+      # Subset weights for these complete cases (if provided)
+      w <- NULL
+      if (!is.null(weights)) {
+        w <- weights[complete_cases]
+      }
+      
       # Numeric vs numeric case
       if (is_num1 && is_num2) {
         if (length(x) > 0 && length(y) > 0) {
-          r <- cor(x, y, use = "complete.obs")
+          if (!is.null(w)) {
+            r <- weighted_cor(x, y, w)
+          } else {
+            r <- cor(x, y, use = "complete.obs")
+          }
           r2 <- r^2
           if (!is.na(r2) && r2 >= num_min && r2 <= num_max) {
             cor_val <- r      # keep sign
@@ -679,7 +789,19 @@ server <- function(input, output, session) {
         # Categorical vs categorical case
       } else if (!is_num1 && !is_num2) {
         if (length(x) > 0 && length(y) > 0) {
-          tbl <- table(x, y)
+          if (!is.null(w)) {
+            # Weighted contingency table
+            df_tmp <- data.frame(x = x, y = y, w = w)
+            df_tmp <- df_tmp[!is.na(df_tmp$w), ]
+            if (nrow(df_tmp) > 0) {
+              tbl <- xtabs(w ~ x + y, data = df_tmp)
+            } else {
+              tbl <- table(x, y)
+            }
+          } else {
+            tbl <- table(x, y)
+          }
+          
           if (nrow(tbl) > 1 && ncol(tbl) > 1) { # Need at least 2 categories in each
             chi <- tryCatch(
               chisq.test(tbl, simulate.p.value = TRUE),
@@ -704,19 +826,54 @@ server <- function(input, output, session) {
         if (is_num1) {
           num_var <- x
           cat_var <- y
+          w_pair  <- w
         } else {
           num_var <- y
           cat_var <- x
+          w_pair  <- w
+        }
+        
+        complete_non_na <- !is.na(num_var) & !is.na(cat_var)
+        num_var <- num_var[complete_non_na]
+        cat_var <- cat_var[complete_non_na]
+        if (!is.null(w_pair)) {
+          w_pair <- w_pair[complete_non_na]
         }
         
         if (length(num_var) > 0 && length(cat_var) > 0) {
-          means_by_group <- tapply(num_var, cat_var, mean, na.rm = TRUE)
-          overall_mean   <- mean(num_var, na.rm = TRUE)
-          n_groups       <- tapply(num_var, cat_var, length)
-          bss <- sum(n_groups * (means_by_group - overall_mean)^2, na.rm = TRUE)
-          tss <- sum((num_var - overall_mean)^2, na.rm = TRUE)
           
-          if (tss > 0) {
+          if (!is.null(w_pair)) {
+            # Weighted correlation ratio (eta)
+            df_tmp <- data.frame(num = num_var,
+                                 cat = cat_var,
+                                 w   = w_pair)
+            
+            df_tmp <- df_tmp[!is.na(df_tmp$w), ]
+            if (nrow(df_tmp) > 0) {
+              # overall weighted mean
+              overall_mean <- with(df_tmp, sum(w * num) / sum(w))
+              
+              # group weights and means
+              group_w   <- tapply(df_tmp$w,   df_tmp$cat, sum)
+              group_num <- tapply(df_tmp$w * df_tmp$num, df_tmp$cat, sum)
+              means_by_group <- group_num / group_w
+              
+              bss <- sum(group_w * (means_by_group - overall_mean)^2, na.rm = TRUE)
+              tss <- sum(df_tmp$w * (df_tmp$num - overall_mean)^2,   na.rm = TRUE)
+            } else {
+              bss <- NA_real_
+              tss <- NA_real_
+            }
+          } else {
+            # Unweighted eta
+            means_by_group <- tapply(num_var, cat_var, mean, na.rm = TRUE)
+            overall_mean <- mean(num_var, na.rm = TRUE)
+            n_groups <- tapply(num_var, cat_var, length)
+            bss <- sum(n_groups * (means_by_group - overall_mean)^2, na.rm = TRUE)
+            tss <- sum((num_var - overall_mean)^2, na.rm = TRUE)
+          }
+          
+          if (!is.na(tss) && tss > 0) {
             eta  <- sqrt(bss / tss)
             eta2 <- eta^2
             if (!is.na(eta2) && eta2 >= num_min && eta2 <= num_max) {
@@ -766,7 +923,18 @@ server <- function(input, output, session) {
       return(div("No valid data available", style = "padding: 20px; text-align: center;"))
     }
     
-    tbl <- table(df_clean[[v1]], df_clean[[v2]])
+    # weighted table if .weight exists
+    if (".weight" %in% names(df_clean)) {
+      df_clean <- df_clean[!is.na(df_clean$.weight), ]
+      if (nrow(df_clean) == 0) {
+        return(div("No valid data available", style = "padding: 20px; text-align: center;"))
+      }
+      form <- as.formula(paste(".weight ~", v1, "+", v2))
+      tbl <- xtabs(form, data = df_clean)
+    } else {
+      tbl <- table(df_clean[[v1]], df_clean[[v2]])
+    }
+    
     if (length(tbl) == 0) {
       return(div("No valid data available", style = "padding: 20px; text-align: center;"))
     }
