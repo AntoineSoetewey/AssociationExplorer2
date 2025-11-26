@@ -960,8 +960,19 @@ server <- function(input, output, session) {
           cell = function(value, index) {
             is_total <- df_table[[desc1]][index] == "Sum" || colname == "Sum"
             val <- as.numeric(value)
-            label <- format(val, big.mark = ",", decimal.mark = ".", scientific = FALSE)
+            
+            # rounding: 0 = nearest integer
+            val_rounded <- round(val, 0)
+            
+            label <- format(
+              val_rounded,
+              big.mark = ",",
+              decimal.mark = ".",
+              scientific = FALSE
+            )
+            
             if (is_total) {
+              # totals without background
               return(label)
             }
             idx <- if (max_val > min_val) {
