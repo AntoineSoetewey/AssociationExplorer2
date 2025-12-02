@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Antoine Soetewey \email{antoine.soetewey@uliege.be} (\href{https://orcid.org/0000-0001-8159-0804}{ORCID})
+\strong{Maintainer}: Antoine Soetewey \email{antoine.soetewey@uclouvain.be} (\href{https://orcid.org/0000-0001-8159-0804}{ORCID})
 
 Authors:
 \itemize{

@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: 
     c(
       person("Antoine", "Soetewey",
-             email = "antoine.soetewey@uliege.be",
+             email = "antoine.soetewey@uclouvain.be",
              role = c("aut", "cre"),
              comment = c(ORCID = "0000-0001-8159-0804")),
       person("Cédric", "Heuchenne", role = "aut", comment = c(0000-0002-3150-3044)),
