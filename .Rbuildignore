@@ -1,3 +1,8 @@
 ^AssociationExplorer2\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+^\.github$
+^CONTRIBUTING\.md$
+^README\.Rmd$
+^\.DS_Store$
+^\.vscode$

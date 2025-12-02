@@ -8,6 +8,14 @@
 \description{
 Shiny application for exploring statistical associations.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/AntoineSoetewey/AssociationExplorer2}
+  \item Report bugs at \url{https://github.com/AntoineSoetewey/AssociationExplorer2/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Antoine Soetewey \email{antoine.soetewey@uliege.be} (\href{https://orcid.org/0000-0001-8159-0804}{ORCID})
 

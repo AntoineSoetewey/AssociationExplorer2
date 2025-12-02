@@ -1,5 +1,5 @@
 Package: AssociationExplorer2
-Title: Shiny Application for Exploring Statistical Associations
+Title: A user-friendly Shiny application for exploring associations and visual patterns
 Version: 0.1.0
 Authors@R: 
     c(
@@ -18,10 +18,11 @@ Description: A user-friendly Shiny application to explore statistical
     categorical). It also supports optional survey weights and 
     range-based filters on association strengths, making it suitable for 
     the exploration of survey and public data by non-technical users, 
-    journalists, educators, and researchers.
+    journalists, educators, and researchers. For background and methodological details, see Soetewey 
+    et al. (2025) <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5637359>.
+License: MIT + file LICENSE
 URL: https://github.com/AntoineSoetewey/AssociationExplorer2
 BugReports: https://github.com/AntoineSoetewey/AssociationExplorer2/issues
-License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
