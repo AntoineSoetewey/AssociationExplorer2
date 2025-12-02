@@ -1,0 +1,95 @@
+* using log directory ‘/Users/antoinesoetewey/Documents/GitHub/AssociationExplorer2/check/AssociationExplorer2.Rcheck’
+* using R version 4.4.1 (2024-06-14)
+* using platform: aarch64-apple-darwin20
+* R was compiled by
+    Apple clang version 14.0.0 (clang-1400.0.29.202)
+    GNU Fortran (GCC) 12.2.0
+* running under: macOS 26.1
+* using session charset: UTF-8
+* using option ‘--as-cran’
+* checking for file ‘AssociationExplorer2/DESCRIPTION’ ... OK
+* this is package ‘AssociationExplorer2’ version ‘0.0.0.9000’
+* package encoding: UTF-8
+* checking CRAN incoming feasibility ... [3s/10s] NOTE
+Maintainer: ‘Antoine Soetewey <antoine.soetewey@uliege.be>’
+
+New submission
+
+Version contains large components (0.0.0.9000)
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘AssociationExplorer2’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import ‘dplyr::as_data_frame’ by ‘igraph::as_data_frame’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘dplyr::groups’ by ‘igraph::groups’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘dplyr::union’ by ‘igraph::union’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘igraph::groups’ by ‘plotly::groups’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘ggplot2::last_plot’ by ‘plotly::last_plot’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘igraph::simplify’ by ‘purrr::simplify’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘igraph::compose’ by ‘purrr::compose’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘readr::col_factor’ by ‘scales::col_factor’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘purrr::discard’ by ‘scales::discard’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘igraph::as_data_frame’ by ‘tibble::as_data_frame’ when loading ‘AssociationExplorer2’
+  Warning: replacing previous import ‘igraph::crossing’ by ‘tidyr::crossing’ when loading ‘AssociationExplorer2’
+See ‘/Users/antoinesoetewey/Documents/GitHub/AssociationExplorer2/check/AssociationExplorer2.Rcheck/00install.out’ for details.
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking code files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking use of S3 registration ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... OK
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... OK
+* checking PDF version of manual ... OK
+* checking HTML version of manual ... NOTE
+Found the following HTML validation problems:
+package_imports.html:15:44 (package_imports.Rd:5): Error: <main> is not recognized!
+package_imports.html:15:44 (package_imports.Rd:5): Warning: discarding unexpected <main>
+package_imports.html:28:1 (package_imports.Rd:9): Warning: discarding unexpected </main>
+package_imports.html:4:1 (package_imports.Rd:5): Warning: <link> inserting "type" attribute
+package_imports.html:12:1 (package_imports.Rd:5): Warning: <script> proprietary attribute "onload"
+package_imports.html:12:1 (package_imports.Rd:5): Warning: <script> inserting "type" attribute
+package_imports.html:17:1 (package_imports.Rd:5): Warning: <table> lacks "summary" attribute
+run_associationexplorer.html:15:44 (run_associationexplorer.Rd:5): Error: <main> is not recognized!
+run_associationexplorer.html:15:44 (run_associationexplorer.Rd:5): Warning: discarding unexpected <main>
+run_associationexplorer.html:62:1 (run_associationexplorer.Rd:26): Warning: discarding unexpected </main>
+run_associationexplorer.html:4:1 (run_associationexplorer.Rd:5): Warning: <link> inserting "type" attribute
+run_associationexplorer.html:12:1 (run_associationexplorer.Rd:5): Warning: <script> proprietary attribute "onload"
+run_associationexplorer.html:12:1 (run_associationexplorer.Rd:5): Warning: <script> inserting "type" attribute
+run_associationexplorer.html:17:1 (run_associationexplorer.Rd:5): Warning: <table> lacks "summary" attribute
+run_associationexplorer.html:39:1 (run_associationexplorer.Rd:10): Warning: <table> lacks "summary" attribute
+run_associationexplorer.html:40:14 (run_associationexplorer.Rd:10): Warning: <code> attribute "id" has invalid value "..."
+* checking for non-standard things in the check directory ... OK
+* checking for detritus in the temp directory ... OK
+* DONE
+Status: 1 WARNING, 2 NOTEs

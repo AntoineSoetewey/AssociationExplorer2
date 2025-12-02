@@ -1,0 +1,61 @@
+﻿Variable,Description
+nwspol,"Time spent on political news (daily, in min)"
+netusoft,Frequency of internet use
+netustm,Daily internet use (in min)
+ppltrst,Trust in others
+pplfair,Perceived fairness of others
+pplhlp,Perceived helpfulness of others
+polintr,Interest in politics
+psppsgva,Feeling of political influence
+actrolga,Self-efficacy in political action
+psppipla,Perceived influence on politics
+cptppola,Confidence in political participation
+trstprl,Trust in country's parliament
+trstlgl,Trust in the legal system
+trstplc,Trust in the police
+trstplt,Trust in politicians
+trstprt,Trust in political parties
+trstep,Trust in the European Parliament
+trstun,Trust in the United Nations
+vote,Voted last national election
+happy,How happy are you
+sclmeet,Frequency of social meetings
+inprdsc,Number of close confidants
+sclact,Social activity
+crmvct,Victim of burglary or assault
+aesfdrk,Feeling of safety
+health,Subjective general health
+hlthhmp,Hampered in daily activities
+atchctr,Emotional attachment to country
+atcherp,Emotional attachment to Europe
+rlgblg,Belongs to a religion
+rlgdgr,How religious are you
+rlgatnd,Attendance at religious services
+pray,Frequency of prayer
+dscrgrp,Belongs to a discriminated group
+ctzcntr,Citizen of country
+brncntr,Born in country
+livecnta,Year of arrival in the country
+feethngr,Same ethnic group as most people
+facntr,Father born in country
+mocntr,Mother born in country
+ccrdprs,Personal responsibility for climate change
+wrclmch,Worry about climate change
+ctrlife,Perceived control over life
+etfruit,Frequency of fruit consumption
+eatveg,Frequency of vegetable consumption
+dosprt,Physically active days
+cgtsmok,Cigarette smoking behaviour
+alcfreq,Alcohol consumption
+alcwkdy,Grams of alcohol (weekdays)
+alcwknd,Grams of alcohol (weekends)
+alcbnge,Frequency of binge drinking
+height,Height (cm)
+weighta,Weight (kg)
+medtrun,Unmet medical need
+stflife,Life's satisfaction
+gndr,Gender
+agea,Age
+rshpsts,Type of relationship with partner
+ipstrgva,Values strong state for safety
+vacc19,Received at least one COVID-19 vaccine

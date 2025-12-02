@@ -1,0 +1,85 @@
+
+R version 4.4.1 (2024-06-14) -- "Race for Your Life"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "AssociationExplorer2"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> base::assign(".ExTimings", "AssociationExplorer2-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('AssociationExplorer2')
+Warning: replacing previous import ‘dplyr::as_data_frame’ by ‘igraph::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::groups’ by ‘igraph::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::union’ by ‘igraph::union’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::groups’ by ‘plotly::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘ggplot2::last_plot’ by ‘plotly::last_plot’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::simplify’ by ‘purrr::simplify’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::compose’ by ‘purrr::compose’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘readr::col_factor’ by ‘scales::col_factor’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘purrr::discard’ by ‘scales::discard’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::as_data_frame’ by ‘tibble::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::crossing’ by ‘tidyr::crossing’ when loading ‘AssociationExplorer2’
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("run_associationexplorer")
+> ### * run_associationexplorer
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: run_associationexplorer
+> ### Title: Launch the AssociationExplorer2 Shiny Application
+> ### Aliases: run_associationexplorer
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D   run_associationexplorer()
+> ## End(Not run)
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("run_associationexplorer", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.542 0.029 0.58 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

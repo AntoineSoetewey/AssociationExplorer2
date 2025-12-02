@@ -1,0 +1,51 @@
+Package: AssociationExplorer2
+Title: Shiny Application for Exploring Statistical Associations
+Version: 0.1.0
+Authors@R: 
+    c(
+      person("Antoine", "Soetewey",
+             email = "antoine.soetewey@uliege.be",
+             role = c("aut", "cre"),
+             comment = c(ORCID = "0000-0001-8159-0804")),
+      person("Cédric", "Heuchenne", role = "aut", comment = c(0000-0002-3150-3044)),
+      person("Arnaud", "Claes", role = "aut", comment = c(0000-0003-0716-0798)),
+      person("Antonin", "Descampe", role = "aut", comment = c(0000-0002-0943-4126))
+    )
+Description: A user-friendly Shiny application to explore statistical 
+    associations and visual patterns in multivariate datasets. The app 
+    provides interactive correlation networks, bivariate plots, and 
+    summary tables for different types of variables (numeric and 
+    categorical). It also supports optional survey weights and 
+    range-based filters on association strengths, making it suitable for 
+    the exploration of survey and public data by non-technical users, 
+    journalists, educators, and researchers.
+URL: https://github.com/AntoineSoetewey/AssociationExplorer2
+BugReports: https://github.com/AntoineSoetewey/AssociationExplorer2/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
+Imports: 
+    shiny
+Suggests: 
+    visNetwork,
+    ggplot2,
+    plotly,
+    dplyr,
+    tidyr,
+    readr,
+    readxl,
+    stringr,
+    purrr,
+    tibble,
+    forcats,
+    reactable,
+    scales,
+    igraph,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+LazyData: true

@@ -1,0 +1,67 @@
+/* www/custom.css */
+
+/* Hover effect for action buttons without blocking click */
+.btn.btn-primary:not(.shiny-download-link):hover {
+  background-color: #005a87 !important;
+  color: white !important;
+}
+
+/* Styling for tab labels */
+.nav-tabs .nav-link {
+  text-transform: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Custom slider track color for threshold sliders */
+.js-irs-0 .irs-bar,
+.js-irs-1 .irs-bar {
+  background-color: #0072B2;
+  border-color: #0072B2;
+}
+
+.reactable-title {
+  font-weight: bold;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* Conteneur principal */
+.app-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Div centrée avec padding-top */
+.centered-padding-top {
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* TitlePanel padding */
+.app-title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* MainPanel style blanc + ombre */
+.panel-white {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Container aide (max-width) */
+.help-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  color: #777;
+  padding: 10px 0;
+  font-size: 13px;
+}

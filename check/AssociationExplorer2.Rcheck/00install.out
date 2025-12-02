@@ -1,0 +1,45 @@
+* installing *source* package ‘AssociationExplorer2’ ...
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Warning: replacing previous import ‘dplyr::as_data_frame’ by ‘igraph::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::groups’ by ‘igraph::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::union’ by ‘igraph::union’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::groups’ by ‘plotly::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘ggplot2::last_plot’ by ‘plotly::last_plot’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::simplify’ by ‘purrr::simplify’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::compose’ by ‘purrr::compose’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘readr::col_factor’ by ‘scales::col_factor’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘purrr::discard’ by ‘scales::discard’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::as_data_frame’ by ‘tibble::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::crossing’ by ‘tidyr::crossing’ when loading ‘AssociationExplorer2’
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+Warning: replacing previous import ‘dplyr::as_data_frame’ by ‘igraph::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::groups’ by ‘igraph::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::union’ by ‘igraph::union’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::groups’ by ‘plotly::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘ggplot2::last_plot’ by ‘plotly::last_plot’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::simplify’ by ‘purrr::simplify’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::compose’ by ‘purrr::compose’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘readr::col_factor’ by ‘scales::col_factor’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘purrr::discard’ by ‘scales::discard’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::as_data_frame’ by ‘tibble::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::crossing’ by ‘tidyr::crossing’ when loading ‘AssociationExplorer2’
+** testing if installed package can be loaded from final location
+Warning: replacing previous import ‘dplyr::as_data_frame’ by ‘igraph::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::groups’ by ‘igraph::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘dplyr::union’ by ‘igraph::union’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::groups’ by ‘plotly::groups’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘ggplot2::last_plot’ by ‘plotly::last_plot’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::simplify’ by ‘purrr::simplify’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::compose’ by ‘purrr::compose’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘readr::col_factor’ by ‘scales::col_factor’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘purrr::discard’ by ‘scales::discard’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::as_data_frame’ by ‘tibble::as_data_frame’ when loading ‘AssociationExplorer2’
+Warning: replacing previous import ‘igraph::crossing’ by ‘tidyr::crossing’ when loading ‘AssociationExplorer2’
+** testing if installed package keeps a record of temporary installation path
+* DONE (AssociationExplorer2)
