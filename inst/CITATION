@@ -9,11 +9,14 @@ citHeader("To cite the AssociationExplorer2 package or the related paper, please
 bibentry(
   bibtype        = "Manual",
   title        = "AssociationExplorer2: A user-friendly Shiny application for exploring associations and visual patterns",
-  author       = c(
-    person("Antoine", "Soetewey")
+  author   = c(
+    person("Antoine", "Soetewey"),
+    person("Cédric", "Heuchenne"),
+    person("Arnaud", "Claes"),
+    person("Antonin", "Descampe")
   ),
   year         = "2025",
-  note         = "R package version 0.1.0",
+  note         = "R package version 0.1.1",
   url          = "https://github.com/AntoineSoetewey/AssociationExplorer2"
 )
 
