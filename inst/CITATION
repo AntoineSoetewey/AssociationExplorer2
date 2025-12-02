@@ -6,29 +6,23 @@ citHeader("To cite the AssociationExplorer2 package or the related paper, please
 ### 1. Citation for the *package*
 ### ------------------------------------------------------------------------
 
-citEntry(
-  entry        = "Manual",
+bibentry(
+  bibtype        = "Manual",
   title        = "AssociationExplorer2: A user-friendly Shiny application for exploring associations and visual patterns",
   author       = c(
     person("Antoine", "Soetewey")
   ),
   year         = "2025",
   note         = "R package version 0.1.0",
-  url          = "https://github.com/AntoineSoetewey/AssociationExplorer2",
-  textVersion  = paste(
-    "Soetewey, A. (2025).",
-    "AssociationExplorer2: A user-friendly Shiny application for exploring associations and visual patterns.",
-    "R package version 0.1.0.",
-    "Available at https://github.com/AntoineSoetewey/AssociationExplorer2."
-  )
+  url          = "https://github.com/AntoineSoetewey/AssociationExplorer2"
 )
 
 ### ------------------------------------------------------------------------
 ### 2. Citation for the *paper*
 ### ------------------------------------------------------------------------
 
-citEntry(
-  entry    = "Article",
+bibentry(
+  bibtype    = "Article",
   title    = "AssociationExplorer: A user-friendly Shiny application for exploring associations and visual patterns",
   author   = c(
     person("Antoine", "Soetewey"),
@@ -39,11 +33,5 @@ citEntry(
   year     = "2025",
   journal  = "Working paper",
   note     = "Available at SSRN.",
-  url      = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5637359",
-  textVersion = paste(
-    "Soetewey, A., Heuchenne, C., Claes, A., & Descampe, A. (2025).",
-    "AssociationExplorer: A user-friendly Shiny application for exploring associations and visual patterns.",
-    "Working paper. Available at SSRN:",
-    "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5637359."
-  )
+  url      = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5637359"
 )

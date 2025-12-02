@@ -21,9 +21,9 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Cédric Heuchenne (-6196)
-  \item Arnaud Claes (-1517)
-  \item Antonin Descampe (-5071)
+  \item Cédric Heuchenne (0000-0002-3150-3044)
+  \item Arnaud Claes (0000-0003-0716-0798)
+  \item Antonin Descampe (0000-0002-0943-4126)
 }
 
 }

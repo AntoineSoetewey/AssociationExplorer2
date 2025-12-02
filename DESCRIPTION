@@ -1,15 +1,15 @@
 Package: AssociationExplorer2
-Title: A user-friendly Shiny application for exploring associations and visual patterns
-Version: 0.1.0
+Title: A User-Friendly Shiny Application for Exploring Associations and Visual Patterns
+Version: 0.1.1
 Authors@R: 
     c(
       person("Antoine", "Soetewey",
              email = "antoine.soetewey@uclouvain.be",
              role = c("aut", "cre"),
              comment = c(ORCID = "0000-0001-8159-0804")),
-      person("Cédric", "Heuchenne", role = "aut", comment = c(0000-0002-3150-3044)),
-      person("Arnaud", "Claes", role = "aut", comment = c(0000-0003-0716-0798)),
-      person("Antonin", "Descampe", role = "aut", comment = c(0000-0002-0943-4126))
+      person("Cédric", "Heuchenne", role = "aut", comment = c("0000-0002-3150-3044")),
+      person("Arnaud", "Claes", role = "aut", comment = c("0000-0003-0716-0798")),
+      person("Antonin", "Descampe", role = "aut", comment = c("0000-0002-0943-4126"))
     )
 Description: A user-friendly Shiny application to explore statistical 
     associations and visual patterns in multivariate datasets. The app 
