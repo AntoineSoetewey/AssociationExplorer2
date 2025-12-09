@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' if (interactive()) {
 #'   run_associationexplorer()
 #' }
 run_associationexplorer <- function(...) {

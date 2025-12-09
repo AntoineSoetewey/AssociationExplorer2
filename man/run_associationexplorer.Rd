@@ -21,7 +21,7 @@ visualizations, and summary tables, with optional support for survey
 weights and range-based filtering of association strengths.
 }
 \examples{
-\dontrun{
+if (interactive()) {
   run_associationexplorer()
 }
 }

@@ -1,6 +1,6 @@
 Package: AssociationExplorer2
-Title: A User-Friendly Shiny Application for Exploring Associations and Visual Patterns
-Version: 0.1.1
+Title: A User-Friendly 'shiny' Application for Exploring Associations and Visual Patterns
+Version: 0.1.2
 Authors@R: 
     c(
       person("Antoine", "Soetewey",
@@ -11,15 +11,7 @@ Authors@R:
       person("Arnaud", "Claes", role = "aut", comment = c("0000-0003-0716-0798")),
       person("Antonin", "Descampe", role = "aut", comment = c("0000-0002-0943-4126"))
     )
-Description: A user-friendly Shiny application to explore statistical 
-    associations and visual patterns in multivariate datasets. The app 
-    provides interactive correlation networks, bivariate plots, and 
-    summary tables for different types of variables (numeric and 
-    categorical). It also supports optional survey weights and 
-    range-based filters on association strengths, making it suitable for 
-    the exploration of survey and public data by non-technical users, 
-    journalists, educators, and researchers. For background and methodological details, see Soetewey 
-    et al. (2025) <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5637359>.
+Description: A user-friendly 'shiny' application to explore statistical associations and visual patterns in multivariate datasets. The app provides interactive correlation networks, bivariate plots, and summary tables for different types of variables (numeric and categorical). It also supports optional survey weights and range-based filters on association strengths, making it suitable for the exploration of survey and public data by non-technical users, journalists, educators, and researchers. For background and methodological details, see Soetewey et al. (2025) <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5637359>.
 License: MIT + file LICENSE
 URL: https://github.com/AntoineSoetewey/AssociationExplorer2
 BugReports: https://github.com/AntoineSoetewey/AssociationExplorer2/issues
