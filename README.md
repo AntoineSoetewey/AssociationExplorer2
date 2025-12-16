@@ -113,9 +113,7 @@ See the LICENSE file for details.
 
 If you use AssociationExplorer2 in your work, please cite the associated paper:
 
-Soetewey, A., Heuchenne, C., Claes, A., & Descampe, A. (2025).
-AssociationExplorer: A user-friendly Shiny application for exploring statistical associations.
-Available at SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5637359
+Soetewey, A., Heuchenne, C., Claes, A., & Descampe, A. (2026). AssociationExplorer: A user-friendly shiny application for exploring statistical associations. SoftwareX, 33(102483). https://doi.org/10.1016/j.softx.2025.102483
 
 You may also cite the R package itself. A complete citation for both the package and the paper can be obtained via:
 
