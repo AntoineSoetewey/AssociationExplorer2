@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/AssociationExplorer2)](https://CRAN.R-project.org/package=AssociationExplorer2)
-[![R-CMD-check](https://github.com/AntoineSoetewey/AssociationExplorer2/actions/workflows/rhub.yaml/badge.svg)](https://github.com/AntoineSoetewey/AssociationExplorer2/actions)
+<!-- [![R-CMD-check](https://github.com/AntoineSoetewey/AssociationExplorer2/actions/workflows/rhub.yaml/badge.svg)](https://github.com/AntoineSoetewey/AssociationExplorer2/actions) -->
 <!-- badges: end -->
 
 **AssociationExplorer2** is an R package that provides a Shiny application for exploring statistical associations within multivariate datasets.
