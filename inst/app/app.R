@@ -252,7 +252,7 @@ server <- function(input, output, session) {
       if (grepl("\\.csv$", desc_path, ignore.case = TRUE)) {
         user_desc <- read.csv(desc_path, stringsAsFactors = FALSE, check.names = FALSE)
       } else {
-        user_desc <- read_excel(desc_path, stringsAsFactors = FALSE)
+        user_desc <- read_excel(desc_path)
       }
 
       # Trim whitespace from column names
