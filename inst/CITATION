@@ -16,7 +16,7 @@ bibentry(
     person("Antonin", "Descampe")
   ),
   year         = "2025",
-  note         = "R package version 0.1.4",
+  note         = "R package version 0.1.5",
   url          = "https://github.com/AntoineSoetewey/AssociationExplorer2"
 )
 

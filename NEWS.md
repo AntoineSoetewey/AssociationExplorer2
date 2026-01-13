@@ -1,10 +1,11 @@
 # AssociationExplorer2
 
-## 0.1.1 - Maintenance release (CRAN resubmission)
+## 0.1.1 to 0.1.5 - Maintenance release (CRAN resubmission)
 
 - Updated the `Title` field in the DESCRIPTION file to meet CRAN Title Case requirements.
 - Revised the `Authors@R` field to remove deprecated comment elements.
 - Updated the `inst/CITATION` file to use `bibentry()` instead of the deprecated `citEntry()`.
+- Clarified CSV input format requirements in the user interface and documentation (comma-separated values and dot decimals).
 - No functional changes to the package code or Shiny application.
 
 ## 0.1.0 - Initial CRAN release
