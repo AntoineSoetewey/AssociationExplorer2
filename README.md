@@ -69,7 +69,8 @@ Instead of setting a single cutoff threshold, users can filter associations base
 
 - Data upload interface
 
-Users can load their own datasets in common formats (CSV, Excel, etc.).
+Users can load their own datasets in common formats (CSV, Excel).
+For CSV files, the separator must be a comma (`,`) and decimals must use a dot (`.`).
 A small demonstration dataset is included with the package.
 
 ---
@@ -90,7 +91,7 @@ Upload your dataset through the interface, select the variables of interest, adj
 ## Included Data
 
 The package includes a small demonstration dataset suitable for illustrating the app’s key functionalities.
-Users can upload CSV or Excel files through the interface to analyze their own data.
+Users can upload CSV or Excel files through the interface to analyze their own data. CSV files must use comma-separated values and dot decimals.
 
 ---
 

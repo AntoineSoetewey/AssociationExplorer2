@@ -11,7 +11,7 @@ Authors@R:
       person("Arnaud", "Claes", role = "aut", comment = c("0000-0003-0716-0798")),
       person("Antonin", "Descampe", role = "aut", comment = c("0000-0002-0943-4126"))
     )
-Description: A user-friendly 'shiny' application to explore statistical associations and visual patterns in multivariate datasets. The app provides interactive correlation networks, bivariate plots, and summary tables for different types of variables (numeric and categorical). It also supports optional survey weights and range-based filters on association strengths, making it suitable for the exploration of survey and public data by non-technical users, journalists, educators, and researchers. For background and methodological details, see Soetewey et al. (2025) <https://doi.org/10.1016/j.softx.2025.102483>.
+Description: A user-friendly 'shiny' application to explore statistical associations and visual patterns in multivariate datasets. The app provides interactive correlation networks, bivariate plots, and summary tables for different types of variables (numeric and categorical). It also supports optional survey weights and range-based filters on association strengths, making it suitable for the exploration of survey and public data by non-technical users, journalists, educators, and researchers. For background and methodological details, see Soetewey et al. (2025) <doi:10.1016/j.softx.2025.102483>.
 License: MIT + file LICENSE
 URL: https://github.com/AntoineSoetewey/AssociationExplorer2
 BugReports: https://github.com/AntoineSoetewey/AssociationExplorer2/issues
