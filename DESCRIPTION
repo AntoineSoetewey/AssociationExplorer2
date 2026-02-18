@@ -23,7 +23,10 @@ Depends:
 Imports: 
     bslib,
     dplyr,
+    forcats,
     ggplot2,
+    grid,
+    gridExtra,
     igraph,
     janitor,
     plotly,
@@ -39,9 +42,7 @@ Imports:
     tibble,
     tidyr,
     tidygraph,
-    visNetwork,
-    forcats,
-    gridExtra
+    visNetwork
 Suggests: 
     knitr,
     rmarkdown,

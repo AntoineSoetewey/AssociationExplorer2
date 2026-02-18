@@ -22,7 +22,7 @@ run_associationexplorer <- function(...) {
   required_pkgs <- c(
     "shiny", "bslib", "dplyr", "ggplot2",
     "scales", "reactable", "tidygraph", "visNetwork",
-    "readxl", "gridExtra", "janitor", "shinyjs",
+    "readxl", "gridExtra", "grid", "janitor", "shinyjs",
     "tibble", "shinycssloaders", "plotly", "tidyr",
     "readr", "stringr", "purrr", "forcats", "igraph"
   )
