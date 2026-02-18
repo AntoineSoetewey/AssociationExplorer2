@@ -22,7 +22,7 @@ The application supports **optional survey weights** and **range-based filters**
 ### From CRAN
 
 ```r
-install.packages("AssociationExplorer2")
+install.packages("AssociationExplorer2", dependencies = TRUE)
 ```
 
 ### Development version from GitHub

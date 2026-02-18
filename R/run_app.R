@@ -20,10 +20,11 @@ run_associationexplorer <- function(...) {
 
   # Required runtime packages
   required_pkgs <- c(
-    "shiny", "visNetwork", "ggplot2", "plotly",
-    "reactable", "dplyr", "tidyr", "readr",
-    "readxl", "stringr", "purrr", "tibble",
-    "forcats", "scales", "igraph"
+    "shiny", "bslib", "dplyr", "ggplot2",
+    "scales", "reactable", "tidygraph", "visNetwork",
+    "readxl", "gridExtra", "janitor", "shinyjs",
+    "tibble", "shinycssloaders", "plotly", "tidyr",
+    "readr", "stringr", "purrr", "forcats", "igraph"
   )
 
   # Check whether all required packages are installed

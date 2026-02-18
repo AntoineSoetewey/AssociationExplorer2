@@ -21,22 +21,28 @@ RoxygenNote: 7.3.3
 Depends:
     R (>= 4.1.0)
 Imports: 
-    shiny
-Suggests: 
-    visNetwork,
-    ggplot2,
-    plotly,
+    bslib,
     dplyr,
-    tidyr,
+    ggplot2,
+    igraph,
+    janitor,
+    plotly,
+    purrr,
+    reactable,
     readr,
     readxl,
-    stringr,
-    purrr,
-    tibble,
-    forcats,
-    reactable,
     scales,
-    igraph,
+    shiny,
+    shinycssloaders,
+    shinyjs,
+    stringr,
+    tibble,
+    tidyr,
+    tidygraph,
+    visNetwork,
+    forcats,
+    gridExtra
+Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
