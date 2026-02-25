@@ -1,3 +1,12 @@
+# AssociationExplorer2 0.1.6
+
+## pkgdown
+
+- Added pkgdown configuration and GitHub Actions workflow for site builds.
+- Updated ignored files to exclude pkgdown outputs and site artifacts.
+- Added the public pkgdown website URL to the package metadata.
+- No functional changes to the package code or Shiny application.
+
 # AssociationExplorer2 0.1.1 to 0.1.5
 
 ## Maintenance release (CRAN resubmission)

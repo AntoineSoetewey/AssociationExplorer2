@@ -6,3 +6,6 @@
 ^README\.Rmd$
 ^\.DS_Store$
 ^\.vscode$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
