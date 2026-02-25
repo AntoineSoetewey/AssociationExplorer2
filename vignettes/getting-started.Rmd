@@ -1,0 +1,52 @@
+---
+title: "Getting started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+AssociationExplorer2 helps you explore associations between variables with an interactive Shiny interface. This short tutorial covers a typical first workflow.
+
+## 1) Install and launch
+
+```{r eval=FALSE}
+install.packages("AssociationExplorer2")
+library(AssociationExplorer2)
+run_associationexplorer()
+```
+
+## 2) Load data
+
+In the app, either:
+
+- upload your own CSV or Excel file, or
+- start with the included demonstration data.
+
+For CSV files, use comma separators and dot decimals.
+
+## 3) Choose analysis variables
+
+Select the variables you want to explore and, if needed, a survey-weight variable. The app automatically adapts visualizations to variable types (numeric or categorical).
+
+## 4) Adjust association filters
+
+Use the minimum and maximum association thresholds to focus on weak, moderate, or strong relationships depending on your objective.
+
+## 5) Read the outputs
+
+Use the network view to identify the strongest links, then inspect bivariate plots and summary tables to interpret the relationships in more detail.
+
+## Next step
+
+Open the function reference for full details on launching the app:
+
+- `run_associationexplorer()` in the Reference tab

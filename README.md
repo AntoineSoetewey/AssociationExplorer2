@@ -75,7 +75,7 @@ A small demonstration dataset is included with the package.
 
 ---
 
-## Exemple
+## Example
 
 ```r
 library(AssociationExplorer2)
