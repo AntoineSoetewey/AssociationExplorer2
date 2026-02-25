@@ -44,3 +44,12 @@ Open the function reference for full details on launching the app:
 
 - [`run_associationexplorer()`](https://antoinesoetewey.com/associationexplorer2/reference/run_associationexplorer.md)
   in the Reference tab
+
+## For more information
+
+If you would like additional background, you can consult:
+
+- the original AssociationExplorer vignette:
+  <https://github.com/AntoineSoetewey/AssociationExplorer/blob/main/documentation/vignette.md>
+- the accompanying published paper:
+  <https://doi.org/10.1016/j.softx.2025.102483>
